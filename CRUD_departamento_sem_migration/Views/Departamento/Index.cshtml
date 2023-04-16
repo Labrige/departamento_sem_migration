@@ -1,0 +1,33 @@
+@model IEnumerable<CRUD_departamento_sem_migration.Models.Models.Departamento>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <h1>Lista de Departamentos</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary mb-3">Criar Novo Departamento</a>
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-secondary">
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.DepartamentoId" class="btn btn-sm btn-success">Detalhes</a>
+                    <a asp-action="Edit" asp-route-id="@item.DepartamentoId" class="btn btn-sm btn-primary">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.DepartamentoId" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja apagar este departamento?')">Apagar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
